@@ -1,4 +1,4 @@
-package main.user;
+package main;
 
 public class Employee {
     
