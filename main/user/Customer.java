@@ -1,11 +1,16 @@
 package main.user;
 
 public class Customer {
-    private int customerId;
-
-
+    int customerId;
+    
     public Customer(int customerId){
         this.customerId = customerId;
     }
+
+    public int getId(){
+        return customerId;
+    }
+
+
     
 }
