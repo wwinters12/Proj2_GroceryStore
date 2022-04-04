@@ -1,4 +1,4 @@
-package test;
+package test.user;
 
 public class EmployeeTest {
     
