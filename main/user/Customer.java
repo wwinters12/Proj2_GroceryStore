@@ -1,16 +1,19 @@
 package main.user;
 
-public class Customer {
-    int customerId;
-    
-    public Customer(int customerId){
-        this.customerId = customerId;
+import main.Item;
+
+public class Customer extends AbstractUser{
+
+    public void addItem(Item item){
+
     }
 
-    public int getId(){
-        return customerId;
+    public void reqVoidItem(Item item){
+
     }
 
-
+    public void reqVoidBill(Item item){
+        
+    }
     
 }
