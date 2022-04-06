@@ -16,7 +16,5 @@ public class ItemTest {
         assertEquals(blackberries.getPrice(), 4.99, 0.00); //getPrice test
         assertEquals(blackberries.isTaxed(), true); //isTaxed test
         assertEquals(blackberries.getQuantity(), 20); //getQuantity test
-
     }
-    
 }
