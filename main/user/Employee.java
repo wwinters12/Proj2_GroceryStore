@@ -1,10 +1,25 @@
 package main.user;
 
-public class Employee extends AbstractUser{
-    int employeeId;
+import main.Item;
 
-    public Employee(int employeeId){
-        this.employeeId = employeeId;
+public class Employee extends AbstractUser{
+    int idNum  ;
+
+    public Employee(int idNumIn){
+        this.idNum = idNumIn;
     }
-    
+
+    public void voidItem(Item item){
+
+    }
+
+    public void voidBill(Customer customer){
+        
+    }
+
+    public double calculateBill(Customer customer){
+        return -1;
+    }
+
+
 }
