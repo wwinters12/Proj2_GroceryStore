@@ -1,15 +1,12 @@
 package main.user;
 
+import main.Cart;
+
 public abstract class AbstractUser {
-    int id;
-    
-    public AbstractUser(int id){
-        this.id = id;
+    Cart cart;
 
-    }
-
-    public int getId(){
-        return id;
+    public String[] printBill(){
+        return cart.items;
     }
 
 }
