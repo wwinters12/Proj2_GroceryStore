@@ -1,12 +1,14 @@
 package main.user;
 
+import main.Cart;
 import main.Item;
 
 public class Employee extends AbstractUser{
-    int idNum  ;
+    int pin;
 
-    public Employee(int idNumIn){
-        this.idNum = idNumIn;
+    public Employee(int idNum, Cart cart, int pin) {
+        super(idNum, cart); 
+        this.pin = pin;
     }
 
     public void voidItem(Item item){
