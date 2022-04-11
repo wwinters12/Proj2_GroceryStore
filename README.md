@@ -4,7 +4,7 @@
 
 ## Sprint 1
 
-Sprint Goal: Customer being able to fill a cart, and request a bill
+Sprint Goal: Customer being able to fill a cart and print their bill with subtotal.
 
 Scrum Master: Muhtasim
 
