@@ -2,6 +2,9 @@
 
 ## Sprint 2
 
+
+Sprint Goal: Basic fully functional software
+
 Sprint 2 Uml Diagrams: https://drive.google.com/file/d/1GDIRhBtNMm6t4WMJpTVC_X_znru0Q2Uh/view?usp=sharing
 
 ## Sprint 1
