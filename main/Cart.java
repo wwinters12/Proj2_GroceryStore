@@ -21,14 +21,8 @@ public class Cart {
 
     public double calculateSubTotal(){
         for(int i = 0 ; i < cart.size(); i++){
-            if(cart.get(i).isTaxed()){
-                subtotal = cart.get(i).getPrice() + (cart.get(i).getPrice() * .13) + subtotal;
-            }
-            else{
-                subtotal = cart.get(i).getPrice() + subtotal;
-            }
+            subtotal = cart.get(i).getPrice() + subtotal;
         }
-
         return subtotal;
     }
 }
