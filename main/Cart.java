@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cart {
     private double subtotal;
@@ -11,8 +12,8 @@ public class Cart {
         cart = new ArrayList<Item>();
     }
 
-    public void setCart(ArrayList<Item> cartIn){
-        cart = cartIn;
+    public void setCart(List<Item> testCart){
+        cart = (ArrayList<Item>) testCart;
     }
 
     public ArrayList<Item> getCart(){

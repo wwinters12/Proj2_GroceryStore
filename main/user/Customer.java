@@ -6,11 +6,11 @@ import main.Cart;
 import main.Item;
 
 public class Customer{
-    Cart Usercart;
+    Cart cart;
     int idNum;
 
     public Customer(int idNumIn, Cart cartIn) {
-        Usercart = cartIn;
+        cart = cartIn;
         idNum = idNumIn;
     }
 
@@ -20,13 +20,13 @@ public class Customer{
 
     public ArrayList<String> printBill(){
         ArrayList<String> bill = new ArrayList<String>();
-        Usercart.getCart();
-        if(Usercart.cart.size() == 0){
+        cart.getCart();
+        if(cart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < Usercart.cart.size(); i++){
-            bill.add("Name: " + Usercart.cart.get(i).getName() + "\tPrice: " + Usercart.cart.get(i).getPrice()
-            + "\tQuantity: " + Usercart.cart.get(i).getQuantity());
+        for(int i = 0; i < cart.cart.size(); i++){
+            bill.add("Name: " + cart.cart.get(i).getName() + "\tPrice: " + cart.cart.get(i).getPrice()
+            + "\tQuantity: " + cart.cart.get(i).getQuantity());
         }
         return bill;
     }
@@ -43,9 +43,8 @@ public class Customer{
         
     }
 
-<<<<<<< HEAD
     public void addItem(String string, double d, boolean b, int i) {
-=======
+    }
     public double payBillCash(double amount){
         double billTotal = 0;
         double tax = 0;
@@ -64,7 +63,6 @@ public class Customer{
         else{
             return amount - billTotal;
         }
->>>>>>> 7cf16b9efb7a9130617ef94b6df3b6549163024b
     }
     
 }
