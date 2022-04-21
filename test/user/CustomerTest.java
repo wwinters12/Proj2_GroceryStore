@@ -20,5 +20,20 @@ public class CustomerTest {
     private void assertEquals(int i, int id) {
     }
 
-   
+    @Test
+    public void payBillCashTest(){
+        Cart cart = new Cart();
+        Customer customer1 = new Customer(123, cart);
+
+        Item bread = new Item("bread", 3.18, true, 50);
+        ArrayList<Item> testCart = new ArrayList<Item>();
+
+        assertThrows(IllegalArgumentException.class,() -> customer1.payBillCash(1));
+
+        testCart.add(bread);
+        cart.setCart(testCart);
+
+        assertEquals(customer1.payBillCash(20), 20 - 3.5934, 0.00001);
+        assertThrows(IllegalArgumentException.class,() -> customer1.payBillCash(1));
+    }
 }
