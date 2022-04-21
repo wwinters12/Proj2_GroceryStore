@@ -43,6 +43,9 @@ public class Customer{
         
     }
 
+<<<<<<< HEAD
+    public void addItem(String string, double d, boolean b, int i) {
+=======
     public double payBillCash(double amount){
         double billTotal = 0;
         double tax = 0;
@@ -61,6 +64,7 @@ public class Customer{
         else{
             return amount - billTotal;
         }
+>>>>>>> 7cf16b9efb7a9130617ef94b6df3b6549163024b
     }
     
 }
