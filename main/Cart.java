@@ -1,5 +1,6 @@
 package main;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,14 @@ public class Cart {
         return cart;
     }
 
-    public double calculateSubTotal(){
+    public Double calculateSubTotal(){
+        String digits = "###.##";
+        DecimalFormat decimal = new DecimalFormat(digits);
         for(int i = 0 ; i < cart.size(); i++){
             subtotal = cart.get(i).getPrice() + subtotal;
         }
-        return subtotal;
+        String sub = decimal.format(subtotal);
+        Double stotal = Double.parseDouble(sub);
+        return stotal;
     }
 }

@@ -28,6 +28,7 @@ public class CartTest {
 
         cart.setCart(testCart);
 
-        assertEquals(21.0745, cart.calculateSubTotal(), 0);
+        assertEquals(18.65, cart.calculateSubTotal(), 0);
+        assertEquals(18.65, 18.65, 0);
     }
 }
