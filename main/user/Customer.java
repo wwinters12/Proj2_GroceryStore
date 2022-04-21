@@ -24,5 +24,8 @@ public class Customer extends AbstractUser{
     public void reqVoidBill(Item item){
         
     }
+
+    public void addItem(String string, double d, boolean b, int i) {
+    }
     
 }
