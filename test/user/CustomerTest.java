@@ -1,11 +1,10 @@
 package test.user;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import java.util.ArrayList;
-
-import org.junit.Assert;
 
 import main.Cart;
 import main.Item;
@@ -14,7 +13,7 @@ import main.user.Customer;
 public class CustomerTest {
 
     @Test
-    void ConstructorTest(){
+    public void constructorTest(){
         Cart cart = new Cart();
         Customer customer1 = new Customer(123, cart);
         assertEquals(123, customer1.getId());
@@ -56,7 +55,7 @@ public class CustomerTest {
         testCart.add(bread);
         cart.setCart(testCart);
 
-        Assert.assertEquals(customer1.payBillCash(20), 20 - 3.5934, 0.00001);
+        assertEquals(customer1.payBillCash(20), 20 - 3.5934, 0.00001);
         assertThrows(IllegalArgumentException.class,() -> customer1.payBillCash(1));
 
         testCart.add(milk);
