@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import main.Cart;
 import main.Item;
 
-public class Customer{
+public class Customer  {
     Cart Usercart;
     int idNum;
 
@@ -31,7 +31,7 @@ public class Customer{
         return bill;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item input){
 
     }
 
@@ -44,6 +44,7 @@ public class Customer{
     }
 
     public void addItem(String string, double d, boolean b, int i) {
+        
     }
     public double payBillCash(double amount){
         double billTotal = 0;

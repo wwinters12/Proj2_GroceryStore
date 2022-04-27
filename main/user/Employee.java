@@ -16,7 +16,7 @@ public class Employee {
         this.pin = pin;
     }
 
-    public void voidItem(Item item){
+    public void voidItem(String input){
 
     }
 
