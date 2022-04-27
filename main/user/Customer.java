@@ -10,6 +10,7 @@ public class Customer  {
     Cart Usercart;
     int idNum;
     StoreInventory inventory;
+    double cardBalance;
 
     public Customer(int idNumIn, Cart cartIn) {
         Usercart = cartIn;
@@ -40,10 +41,7 @@ public class Customer  {
         }
         else if(inventory.hashInventory(input)!=null){
             Usercart.cart.add((Item) inventory.hashInventory(input));
-        }
- 
-        
-        
+        }  
     }
 
     public void reqVoidItem(Item item){
@@ -57,6 +55,7 @@ public class Customer  {
     public void addItem(String string, double d, boolean b, int i) {
         
     }
+
     public double payBillCash(double amount){
         double billTotal = 0;
         double tax = 0;
@@ -76,8 +75,6 @@ public class Customer  {
             return amount - billTotal;
         }
     }
-    
-}
 
     public void payBillCard(){
         double billTotal = 0;

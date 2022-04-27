@@ -1,6 +1,8 @@
 package main;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cart {
     private double subtotal;
@@ -11,18 +13,22 @@ public class Cart {
         cart = new ArrayList<Item>();
     }
 
-    public void setCart(ArrayList<Item> cartIn){
-        cart = cartIn;
+    public void setCart(List<Item> testCart){
+        cart = (ArrayList<Item>) testCart;
     }
 
     public ArrayList<Item> getCart(){
         return cart;
     }
 
-    public double calculateSubTotal(){
+    public Double calculateSubTotal(){
+        String digits = "###.##";
+        DecimalFormat decimal = new DecimalFormat(digits);
         for(int i = 0 ; i < cart.size(); i++){
             subtotal = cart.get(i).getPrice() + subtotal;
         }
-        return subtotal;
+        String sub = decimal.format(subtotal);
+        Double stotal = Double.parseDouble(sub);
+        return stotal;
     }
 }

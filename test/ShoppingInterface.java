@@ -17,8 +17,9 @@ public class ShoppingInterface {
             boolean running = true;
             Cart cart = new Cart();
             StoreInventory storeInventory = new StoreInventory();
+            storeInventory.createInventory();
             String itemName;
-
+            double bill;
 
 
             while(running) {
@@ -33,13 +34,14 @@ public class ShoppingInterface {
                     input = in.nextLine();
                     while(!input.equals("done")){
                         input = in.nextLine();
-                        //Customer needs to add item
+                        customer.addItem(input);
                     }
                     System.out.println("type total if you'd like a total of the bill.");
                     System.out.println("void item if you'd like to void an item");
                     System.out.println("type void all if you'd like to void entire bill");
-                    if(input.equals("total")){
-                        employee.calculateBill(customer);
+                    if(input.equals("done")){
+                        bill = employee.calculateBill(customer);
+                        System.out.println(bill);
                     }
                     else if(input.equals("void item")){
                         System.out.println("What would you like to void");
