@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class StoreInventory {
 
@@ -34,7 +35,7 @@ public class StoreInventory {
         storeInventory.add(item8);
         storeInventory.add(item9);
 
-        hashInventory.put("Blackberry", item1);
+        hashInventory.put(item1.getName(), item1);
         hashInventory.put("Muffins", item2);
         hashInventory.put("Bread", item3);
         hashInventory.put("Hershey", item4);
@@ -47,7 +48,7 @@ public class StoreInventory {
         return hashInventory;
     }
 
-    public Map<String,Item> hashInventory(){
-        return hashInventory;
+    public Set<String> hashInventory(String input){
+        return hashInventory.keySet();
     }
 }

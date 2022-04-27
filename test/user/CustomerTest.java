@@ -18,7 +18,7 @@ public class CustomerTest {
         Cart cart = new Cart();
         Customer customer1 = new Customer(123, cart);
         
-        customer1.addItem(new Item("Tofu", 6.85, true, 6));
+        //customer1.addItem(new Item("Tofu", 6.85, true, 6));
         assertEquals(123,customer1.getId());
         
     }
