@@ -3,7 +3,6 @@ package main.user;
 import java.util.ArrayList;
 
 import main.Cart;
-import main.Item;
 
 public class Employee {
     Cart cart;

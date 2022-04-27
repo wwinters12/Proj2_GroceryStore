@@ -7,12 +7,13 @@ import main.Item;
 import main.StoreInventory;
 
 public class Customer  {
-    Cart usercart;
+    Cart Usercart;
     int idNum;
     StoreInventory inventory;
+    double cardBalance;
 
     public Customer(int idNumIn, Cart cartIn) {
-        usercart = cartIn;
+        Usercart = cartIn;
         idNum = idNumIn;
 
     }
@@ -23,13 +24,13 @@ public class Customer  {
 
     public ArrayList<String> printBill(){
         ArrayList<String> bill = new ArrayList<String>();
-        usercart.getCart();
-        if(usercart.cart.size() == 0){
+        Usercart.getCart();
+        if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < usercart.cart.size(); i++){
-            bill.add("Name: " + usercart.cart.get(i).getName() + "\tPrice: " + usercart.cart.get(i).getPrice()
-            + "\tQuantity: " + usercart.cart.get(i).getQuantity());
+        for(int i = 0; i < Usercart.cart.size(); i++){
+            bill.add("Name: " + Usercart.cart.get(i).getName() + "\tPrice: " + Usercart.cart.get(i).getPrice()
+            + "\tQuantity: " + Usercart.cart.get(i).getQuantity());
         }
         return bill;
     }
@@ -39,11 +40,8 @@ public class Customer  {
             input.equals("done");
         }
         else if(inventory.hashInventory(input)!=null){
-            usercart.cart.add((Item) inventory.hashInventory(input));
-        }
- 
-        
-        
+            Usercart.cart.add((Item) inventory.hashInventory(input));
+        }  
     }
 
     public void reqVoidItem(Item item){
@@ -57,17 +55,18 @@ public class Customer  {
     public void addItem(String string, double d, boolean b, int i) {
         
     }
+
     public double payBillCash(double amount){
         double billTotal = 0;
         double tax = 0;
         double subTotal = 0;
-        if(usercart.cart.size() == 0){
+        if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < usercart.cart.size(); i++){
-            tax = tax + (usercart.cart.get(i).getPrice() * .13);
+        for(int i = 0; i < Usercart.cart.size(); i++){
+            tax = tax + (Usercart.cart.get(i).getPrice() * .13);
         }
-        subTotal = usercart.calculateSubTotal();
+        subTotal = Usercart.calculateSubTotal();
         billTotal = subTotal + tax;
         if(amount < billTotal){
             throw new IllegalArgumentException("Not enough money");
@@ -75,6 +74,28 @@ public class Customer  {
         else{
             return amount - billTotal;
         }
+    }
+
+    public void payBillCard(){
+        double billTotal = 0;
+        if(Usercart.cart.size() == 0){
+            throw new IllegalArgumentException("Nothing in the cart");
+        }
+        for(int i = 0; i < Usercart.cart.size(); i++){
+            billTotal += (Usercart.cart.get(i).getPrice() * 1.13);
+        }
+        if(cardBalance < billTotal){
+            throw new IllegalArgumentException("Not enough money");
+        }
+        cardBalance -= billTotal;
+    }
+
+    public void addCard(double amount){
+        cardBalance = amount;
+    }
+
+    public double getCardBalance(){
+        return cardBalance;
     }
     
 }
