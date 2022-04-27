@@ -93,5 +93,9 @@ public class Customer  {
     public double getCardBalance(){
         return cardBalance;
     }
+
+    public void depositMoney(double amount){
+        cardBalance += amount;
+    }
     
 }
