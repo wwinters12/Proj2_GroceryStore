@@ -3,7 +3,7 @@ package main.user;
 import main.Cart;
 import main.Item;
 
-public class Employee extends AbstractUser{
+public class Employee{
     int pin;
 
     public Employee(int idNum, Cart cart, int pin) {
