@@ -46,4 +46,8 @@ public class StoreInventory {
 
         return hashInventory;
     }
+
+    public Map<String,Item> hashInventory(){
+        return hashInventory;
+    }
 }
