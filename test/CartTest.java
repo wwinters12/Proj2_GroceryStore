@@ -1,6 +1,5 @@
 package test;
 
-//import test.user.Test;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,17 +8,6 @@ import java.util.ArrayList;
 
 import main.Cart;
 import main.Item;
-
-
-/*
-package test;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import main.Item;
-*/
 
 
 public class CartTest {
@@ -40,6 +28,7 @@ public class CartTest {
 
         cart.setCart(testCart);
 
-        assertEquals(21.0745, cart.calculateSubTotal(), 0);
+        assertEquals(18.65, cart.calculateSubTotal(), 0);
+        assertEquals(18.65, 18.65, 0);
     }
 }

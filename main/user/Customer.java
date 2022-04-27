@@ -1,19 +1,37 @@
 package main.user;
 
+import java.util.ArrayList;
+
 import main.Cart;
 import main.Item;
 
-public class Customer extends AbstractUser{
+public class Customer  {
+    Cart Usercart;
+    int idNum;
 
-    public Customer(int idNum, Cart cart) {
-        super(idNum, cart);
+    public Customer(int idNumIn, Cart cartIn) {
+        Usercart = cartIn;
+        idNum = idNumIn;
     }
 
     public int getId(){
         return idNum;
     }
 
-    public void addItem(Item item){
+    public ArrayList<String> printBill(){
+        ArrayList<String> bill = new ArrayList<String>();
+        Usercart.getCart();
+        if(Usercart.cart.size() == 0){
+            throw new IllegalArgumentException("Nothing in the cart");
+        }
+        for(int i = 0; i < Usercart.cart.size(); i++){
+            bill.add("Name: " + Usercart.cart.get(i).getName() + "\tPrice: " + Usercart.cart.get(i).getPrice()
+            + "\tQuantity: " + Usercart.cart.get(i).getQuantity());
+        }
+        return bill;
+    }
+
+    public void addItem(Item input){
 
     }
 
@@ -25,6 +43,9 @@ public class Customer extends AbstractUser{
         
     }
 
+    public void addItem(String string, double d, boolean b, int i) {
+        
+    }
     public double payBillCash(double amount){
         double billTotal = 0;
         double tax = 0;
