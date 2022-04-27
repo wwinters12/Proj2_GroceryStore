@@ -36,7 +36,15 @@ public class Employee {
     }
 
     public double calculateBill(Customer customer){
-        return -1;
+        double billTotal = 0;
+        if(customer.Usercart.cart.size() == 0){
+            throw new IllegalArgumentException("Nothing in the cart");
+        }
+        for(int i = 0; i < customer.Usercart.cart.size(); i++){
+            billTotal += (customer.Usercart.cart.get(i).getPrice() * 1.13);
+        }
+
+        return billTotal;
     }
 
 

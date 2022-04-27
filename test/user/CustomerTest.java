@@ -55,7 +55,7 @@ public class CustomerTest {
         testCart.add(bread);
         cart.setCart(testCart);
 
-        assertEquals(customer1.payBillCash(20), 20 - 3.5934, 0.00001);
+        assertEquals(customer1.payBillCash(20), 20 - 3.5934, 0.0001);
         assertThrows(IllegalArgumentException.class,() -> customer1.payBillCash(1));
 
         testCart.add(milk);
