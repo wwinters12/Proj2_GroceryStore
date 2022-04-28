@@ -1,5 +1,6 @@
 package test;
 
+
 import java.util.Scanner;
 
 import main.Cart;
@@ -15,6 +16,8 @@ public class ShoppingInterface {
             boolean running = true;
             Cart cart = new Cart();
             double bill;
+            Customer customer = new Customer(01, cart);
+            Employee employee = new Employee(01, cart, 1234);
 
 
             while(running) {
@@ -23,14 +26,13 @@ public class ShoppingInterface {
                 String input = in.nextLine();
                 if(input.equals("y")){
                     System.out.println("If youre done adding items to cart, say done");
-                    Customer customer = new Customer(01, cart);
-                    Employee employee = new Employee(01, cart, 1234);
+
                     System.out.println("type item");
                     while(!input.equals("done")){
                         input = in.nextLine();
                         customer.addItem(input);
                         System.out.println("MENU:");
-                        System.out.println("1. Done --> if finished shopping.");
+                        System.out.println("1. done --> if finished shopping.");
                         System.out.println("2. void --> if an item void is needed.");
                         System.out.println("3. void all --> to void bill.");
                         System.out.println("4. deposit --> if not enough money on card.");
@@ -45,6 +47,7 @@ public class ShoppingInterface {
                                 customer.addCard(100);
                                 customer.payBillCard();
                                 System.out.println("Approved");
+                                running=false;
                                 break;
                             }
                             else if(input.equals("cash")){
@@ -59,37 +62,43 @@ public class ShoppingInterface {
                                 }
                                 System.out.println("Your change is: " + change);
                                 System.out.println("Thanks, Have a good day!");
+                                running=false;
+                                break;
                                 
 
                                 }
                             }
+                            if(bill==0.00){
+                                System.out.println("Have a good day!");
+                                break;
+                            }
                         }
-                        if(bill==0.00){
-                            System.out.println("Have a good day!");
+                        else if(input.equals("void item")){
+                            System.out.println("What would you like to void");
+                            employee.voidItem(input);
+                        }
+                        else if(input.equals("void all")){
+                            employee.voidBill(customer);
+                            System.out.println("Thank you, have a good day!");
                             break;
                         }
+                        else if(input.equals("deposit")){
+                            double input1 = in.nextDouble();
+                            customer.depositMoney(input1);
+                        }
+            
                     }
-                    else if(input.equals("void item")){
-                        System.out.println("What would you like to void");
-                        employee.voidItem(input);
+                    else{
+                        System.out.println("Have a good day!");
                     }
-                    else if(input.equals("void all")){
-                        employee.voidBill(customer);
-                    }
-                    else if(input.equals("deposit")){
-                        double input1 = in.nextDouble();
-                        customer.depositMoney(input1);
-                    }
+ 
                     
 
                     
                 }
-                else{
-                    System.out.println("Have a good day!");
-                    break;
-                }
+                running=false;
+                                
             }
         }
-
     }
-}
+
