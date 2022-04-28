@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class StoreInventory {
 
@@ -25,30 +24,17 @@ public class StoreInventory {
         Item item8 = new Item("Steak", 4.99, true, 20);
         Item item9 = new Item("Peanut Butter", 4.99, true, 20);
 
-        storeInventory.add(item1);
-        storeInventory.add(item2);
-        storeInventory.add(item3);
-        storeInventory.add(item4);
-        storeInventory.add(item5);
-        storeInventory.add(item6);
-        storeInventory.add(item7);
-        storeInventory.add(item8);
-        storeInventory.add(item9);
-
         hashInventory.put(item1.getName(), item1);
-        hashInventory.put("Muffins", item2);
-        hashInventory.put("Bread", item3);
-        hashInventory.put("Hershey", item4);
-        hashInventory.put("Strawberry", item5);
-        hashInventory.put("Tofu", item6);
-        hashInventory.put("Salmon", item7);
-        hashInventory.put("Steak", item8);
-        hashInventory.put("Peanut Butter", item9);
+        hashInventory.put(item2.getName(), item2);
+        hashInventory.put(item3.getName(), item3);
+        hashInventory.put(item4.getName(), item4);
+        hashInventory.put(item5.getName(), item5);
+        hashInventory.put(item6.getName(), item6);
+        hashInventory.put(item7.getName(), item7);
+        hashInventory.put(item8.getName(), item8);
+        hashInventory.put(item9.getName(), item9);
 
         return hashInventory;
     }
 
-    public Set<String> hashInventory(String input){
-        return hashInventory.keySet();
-    }
 }

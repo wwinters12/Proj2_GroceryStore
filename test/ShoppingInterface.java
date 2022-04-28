@@ -2,10 +2,8 @@ package test;
 
 import java.util.Scanner;
 
-import main.Item;
 import main.Cart;
-import main.Store;
-import main.StoreInventory;
+
 import main.user.Customer;
 import main.user.Employee;
 
@@ -16,9 +14,6 @@ public class ShoppingInterface {
 
             boolean running = true;
             Cart cart = new Cart();
-            StoreInventory storeInventory = new StoreInventory();
-            storeInventory.createInventory();
-            String itemName;
             double bill;
 
 
@@ -31,17 +26,37 @@ public class ShoppingInterface {
                     Customer customer = new Customer(01, cart);
                     Employee employee = new Employee(01, cart, 1234);
                     System.out.println("type item");
-                    input = in.nextLine();
                     while(!input.equals("done")){
                         input = in.nextLine();
                         customer.addItem(input);
+                        System.out.println("type done if you'd like a total of the bill.");
+                        System.out.println("void item if you'd like to void an item");
+                        System.out.println("type void all if you'd like to void entire bill");
+                        System.out.println("type deposit if you need to add money");
                     }
-                    System.out.println("type total if you'd like a total of the bill.");
-                    System.out.println("void item if you'd like to void an item");
-                    System.out.println("type void all if you'd like to void entire bill");
                     if(input.equals("done")){
                         bill = employee.calculateBill(customer);
                         System.out.println(bill);
+                        System.out.println("How will you pay your bill?");
+                        while(bill!=0.00){
+                            input = in.nextLine();
+                            if(input.equals("card")){
+                                customer.addCard(100);
+                                customer.payBillCard();
+                                System.out.println("Approved");
+                                break;
+                            }
+                            else if(input.equals("cash")){
+                                System.out.println("How much cash?");
+                                double input1 = in.nextFloat();
+                                customer.payBillCash(input1);
+                                System.out.println("Thanks, Have a good day!");
+                            }
+                        }
+                        if(bill==0.00){
+                            System.out.println("Have a good day!");
+                            break;
+                        }
                     }
                     else if(input.equals("void item")){
                         System.out.println("What would you like to void");
@@ -49,6 +64,10 @@ public class ShoppingInterface {
                     }
                     else if(input.equals("void all")){
                         employee.voidBill(customer);
+                    }
+                    else if(input.equals("deposit")){
+                        double input1 = in.nextDouble();
+                        customer.depositMoney(input1);
                     }
                     
 

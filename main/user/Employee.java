@@ -28,7 +28,7 @@ public class Employee {
         if(customerCart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < customerCart.cart.size(); i++){
+        for(int i = 0; i < customerCart.cart.size()-1; i++){
             bill.add("Name: " + customerCart.cart.get(i).getName() + "\tPrice: " + customerCart.cart.get(i).getPrice()
             + "\tQuantity: " + customerCart.cart.get(i).getQuantity());
         }
@@ -40,7 +40,7 @@ public class Employee {
         if(customer.Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < customer.Usercart.cart.size(); i++){
+        for(int i = 0; i < customer.Usercart.cart.size()-1; i++){
             billTotal += (customer.Usercart.cart.get(i).getPrice() * 1.13);
         }
 

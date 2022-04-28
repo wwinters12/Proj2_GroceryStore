@@ -1,6 +1,7 @@
 package main.user;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import main.Cart;
 import main.Item;
@@ -15,6 +16,7 @@ public class Customer  {
     public Customer(int idNumIn, Cart cartIn) {
         Usercart = cartIn;
         idNum = idNumIn;
+        inventory = new StoreInventory();
 
     }
 
@@ -35,13 +37,19 @@ public class Customer  {
         return bill;
     }
 
-    public void addItem(String input){
-        if(input.equals("done")){
-            input.equals("done");
+    public Item addItemString(String input){
+        if(!input.equals("done")){
+            Map<String,Item> store = inventory.createInventory();
+            return store.get(input);
         }
-        else if(inventory.hashInventory(input)!=null){
-            Usercart.cart.add((Item) inventory.hashInventory(input));
-        }  
+        else{
+            return null;
+        }
+        
+    }
+    
+    public void addItem(String itemString){
+        Usercart.cart.add(addItemString(itemString));
     }
 
     public void reqVoidItem(Item item){
@@ -52,16 +60,12 @@ public class Customer  {
         
     }
 
-    public void addItem(String string, double d, boolean b, int i) {
-        
-    }
-
     public double payBillCash(double amount){
         double billTotal = 0;
         if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < Usercart.cart.size(); i++){
+        for(int i = 0; i < Usercart.cart.size()-1; i++){
             billTotal += (Usercart.cart.get(i).getPrice() * 1.13);
         }
         if(amount < billTotal){
@@ -77,7 +81,7 @@ public class Customer  {
         if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < Usercart.cart.size(); i++){
+        for(int i = 0; i < Usercart.cart.size()-1; i++){
             billTotal += (Usercart.cart.get(i).getPrice() * 1.13);
         }
         if(cardBalance < billTotal){
