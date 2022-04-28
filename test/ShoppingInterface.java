@@ -1,10 +1,13 @@
 package test;
 
 
+import java.lang.reflect.Array;
+import java.util.Map;
 import java.util.Scanner;
 
 import main.Cart;
-
+import main.Item;
+import main.StoreInventory;
 import main.user.Customer;
 import main.user.Employee;
 
@@ -12,12 +15,19 @@ public class ShoppingInterface {
     public static void main(String[] args){
         try (Scanner in = new Scanner(System.in)) {
             String welcome = "Welcome to the grocery store!";
+            
 
             boolean running = true;
             Cart cart = new Cart();
             double bill;
             Customer customer = new Customer(01, cart);
             Employee employee = new Employee(01, cart, 1234);
+            StoreInventory inventory = new StoreInventory();
+            Map<String,Item> storeInventory = inventory.createInventory();
+            String stuff = storeInventory.keySet().toString();
+
+
+
 
 
             while(running) {
@@ -29,6 +39,7 @@ public class ShoppingInterface {
 
                     System.out.println("type item");
                     while(!input.equals("done")){
+                        System.out.println(stuff);
                         input = in.nextLine();
                         customer.addItem(input);
                         System.out.println("MENU:");
@@ -38,6 +49,7 @@ public class ShoppingInterface {
                         System.out.println("4. deposit --> if not enough money on card.");
                     }
                     if(input.equals("done")){
+                       
                         bill = employee.calculateBill(customer);
                         System.out.println(bill);
                         System.out.println("How will you pay your bill?");
@@ -60,7 +72,7 @@ public class ShoppingInterface {
                                     System.out.println("Please insert more money.");
                                     change = customer.payBillCash(input1);
                                 }
-                                System.out.println("Your change is: " + change);
+                                System.out.println("Your change is: " + Math.round(change));
                                 System.out.println("Thanks, Have a good day!");
                                 running=false;
                                 break;
