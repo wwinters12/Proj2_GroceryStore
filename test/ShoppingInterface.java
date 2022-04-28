@@ -29,10 +29,11 @@ public class ShoppingInterface {
                     while(!input.equals("done")){
                         input = in.nextLine();
                         customer.addItem(input);
-                        System.out.println("type done if you'd like a total of the bill.");
-                        System.out.println("void item if you'd like to void an item");
-                        System.out.println("type void all if you'd like to void entire bill");
-                        System.out.println("type deposit if you need to add money");
+                        System.out.println("MENU:");
+                        System.out.println("1. Done --> if finished shopping.");
+                        System.out.println("2. void --> if an item void is needed.");
+                        System.out.println("3. void all --> to void bill.");
+                        System.out.println("4. deposit --> if not enough money on card.");
                     }
                     if(input.equals("done")){
                         bill = employee.calculateBill(customer);
@@ -49,8 +50,18 @@ public class ShoppingInterface {
                             else if(input.equals("cash")){
                                 System.out.println("How much cash?");
                                 double input1 = in.nextFloat();
-                                customer.payBillCash(input1);
+                                double change = customer.payBillCash(input1);
+                                while(change==-1){
+                                    System.out.println("Not enough money!");
+                                    input1 = in.nextFloat();
+                                    System.out.println("Please insert more money.");
+                                    change = customer.payBillCash(input1);
+                                }
+                                System.out.println("Your change is: " + change);
                                 System.out.println("Thanks, Have a good day!");
+                                
+
+                                }
                             }
                         }
                         if(bill==0.00){

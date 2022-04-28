@@ -69,7 +69,8 @@ public class Customer  {
             billTotal += (Usercart.cart.get(i).getPrice() * 1.13);
         }
         if(amount < billTotal){
-            throw new IllegalArgumentException("Not enough money");
+            return -1;
+            //throw new IllegalArgumentException("Not enough money");
         }
         else{
             return amount - billTotal;
