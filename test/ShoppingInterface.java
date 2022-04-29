@@ -1,7 +1,6 @@
 package test;
 
 
-import java.lang.reflect.Array;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -62,7 +61,7 @@ public class ShoppingInterface {
                                 running=false;
                                 break;
                             }
-                            else if(input.equals("cash")){
+                            if(input.equals("cash")){
                                 System.out.println("How much cash?");
                                 double input1 = in.nextFloat();
                                 double change = customer.payBillCash(input1);
@@ -72,12 +71,34 @@ public class ShoppingInterface {
                                     System.out.println("Please insert more money.");
                                     change = customer.payBillCash(input1);
                                 }
-                                System.out.println("Your change is: " + Math.round(change));
+                                System.out.println("Your change is: " + change);
                                 System.out.println("Thanks, Have a good day!");
                                 running=false;
                                 break;
                                 
 
+                                }
+                                while(input.equals("void item")){
+                                    System.out.println("What would you like to void");
+                                    input = in.nextLine();
+                                    employee.voidItem(customer, input);
+                                    System.out.println("Your item has been voided!");
+                                    System.out.println("Your total is" + customer.printBill());
+                                    input = in.nextLine();
+                                    break;
+
+                                    
+                                }
+                                if(input.equals("void all")){
+                                    employee.voidBill(customer);
+                                    System.out.println("Thank you, have a good day!");
+                                    break;
+                                }
+                                if(input.equals("deposit")){
+                                    double input1 = in.nextDouble();
+                                    System.out.println("How much $$$?");
+                                    customer.depositMoney(input1);
+                                    System.out.println("You now have: "+ customer.getCardBalance());
                                 }
                             }
                             if(bill==0.00){
@@ -85,19 +106,7 @@ public class ShoppingInterface {
                                 break;
                             }
                         }
-                        else if(input.equals("void item")){
-                            System.out.println("What would you like to void");
-                            employee.voidItem(input);
-                        }
-                        else if(input.equals("void all")){
-                            employee.voidBill(customer);
-                            System.out.println("Thank you, have a good day!");
-                            break;
-                        }
-                        else if(input.equals("deposit")){
-                            double input1 = in.nextDouble();
-                            customer.depositMoney(input1);
-                        }
+ 
             
                     }
                     else{

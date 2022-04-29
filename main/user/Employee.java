@@ -15,11 +15,20 @@ public class Employee {
         this.pin = pin;
     }
 
-    public void voidItem(String input){
+    public void voidItem(Customer customer,String input){
+        for (int i = 0; i < customer.Usercart.cart.size(); i++){
+            if(customer.Usercart.cart.get(i).getName().equals(input)){
+                customer.Usercart.cart.remove(i);
+                break;
+            }
+        }
 
     }
 
     public void voidBill(Customer customer){
+        for(int i = 0; i < customer.Usercart.cart.size(); i++){
+            customer.Usercart.cart.remove(i);
+        }
         
     }
 
