@@ -6,6 +6,8 @@ Sprint Goal: Basic fully functional software
 
 Sprint 2 Uml Diagrams: https://drive.google.com/file/d/1GDIRhBtNMm6t4WMJpTVC_X_znru0Q2Uh/view?usp=sharing
 
+Sprint 2 Retrospective: https://docs.google.com/document/d/1C3o6Lb_IPiUtgO3eBFmRSjYVwVrgylyMKgbB-G3swzw/edit?usp=sharing
+
 ## Sprint 1
 
 Sprint Goal: Customer being able to fill a cart and print their bill with subtotal.
