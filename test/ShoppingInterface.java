@@ -18,7 +18,7 @@ public class ShoppingInterface {
 
             boolean running = true;
             Cart cart = new Cart();
-            double bill;
+            double bill = -1;
             Customer customer = new Customer(01, cart);
             Employee employee = new Employee(01, cart, 1234);
             StoreInventory inventory = new StoreInventory();
@@ -28,30 +28,49 @@ public class ShoppingInterface {
 
 
 
-
-            while(running) {
+            while(running || bill!=0.0) {
                 System.out.println(welcome);
                 System.out.println("Would you like to begin checking out?(y/n)");
                 String input = in.nextLine();
                 if(input.equals("y")){
-                    System.out.println("If youre done adding items to cart, say done");
-
-                    System.out.println("type item");
-                    while(!input.equals("done")){
+                    while(!input.equals("pay")){
+                        System.out.println("Add Item to cart.");
                         System.out.println(stuff);
                         input = in.nextLine();
                         customer.addItem(input);
                         System.out.println("MENU:");
-                        System.out.println("1. done --> if finished shopping.");
-                        System.out.println("2. void --> if an item void is needed.");
-                        System.out.println("3. void all --> to void bill.");
-                        System.out.println("4. deposit --> if not enough money on card.");
+                        System.out.println("1. pay");
+                        System.out.println("2. void item");
+                        System.out.println("3. void all");
+                        System.out.println("4. deposit");
+                        System.out.println("Reciept: " + customer.printBill());
+                        if(input.equals("void item")){
+                            System.out.println("What would you like to void");
+                            input = in.nextLine();
+                            employee.voidItem(customer, input);
+                            System.out.println("Your item has been voided!");
+                            System.out.println("MENU:");
+                            System.out.println("1. pay");
+                            System.out.println("2. void item");
+                            System.out.println("3. void all");
+                            System.out.println("4. deposit");
+                            input = in.nextLine();
+                        }
+
+                        else if(input.equals("void all")){
+                            employee.voidBill(customer);
+                            System.out.println("Thank you, have a good day!");
+                            break;
+                        }
                     }
-                    if(input.equals("done")){
-                       
+                    if(input.equals("pay")){
+                        if(cart.cart.size()==0){
+                            throw new NullPointerException("Empty cart");
+                        }
                         bill = employee.calculateBill(customer);
                         System.out.println(bill);
                         System.out.println("How will you pay your bill?");
+
                         while(bill!=0.00){
                             input = in.nextLine();
                             if(input.equals("card")){
@@ -75,36 +94,21 @@ public class ShoppingInterface {
                                 System.out.println("Thanks, Have a good day!");
                                 running=false;
                                 break;
-                                
-
-                                }
-                                while(input.equals("void item")){
-                                    System.out.println("What would you like to void");
-                                    input = in.nextLine();
-                                    employee.voidItem(customer, input);
-                                    System.out.println("Your item has been voided!");
-                                    System.out.println("Your total is" + customer.printBill());
-                                    input = in.nextLine();
-                                    break;
-
-                                    
-                                }
-                                if(input.equals("void all")){
-                                    employee.voidBill(customer);
-                                    System.out.println("Thank you, have a good day!");
-                                    break;
-                                }
-                                if(input.equals("deposit")){
-                                    double input1 = in.nextDouble();
-                                    System.out.println("How much $$$?");
-                                    customer.depositMoney(input1);
-                                    System.out.println("You now have: "+ customer.getCardBalance());
                                 }
                             }
+
                             if(bill==0.00){
                                 System.out.println("Have a good day!");
                                 break;
                             }
+                        }
+
+
+                        if(input.equals("deposit")){
+                            double input1 = in.nextDouble();
+                            System.out.println("How much $$$?");
+                            customer.depositMoney(input1);
+                            System.out.println("You now have: "+ customer.getCardBalance());
                         }
  
             
@@ -117,6 +121,7 @@ public class ShoppingInterface {
 
                     
                 }
+                System.out.println("Have a good day!");
                 running=false;
                                 
             }

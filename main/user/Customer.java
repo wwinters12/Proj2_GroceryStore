@@ -1,5 +1,6 @@
 package main.user;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -30,9 +31,8 @@ public class Customer  {
         if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
-        for(int i = 0; i < Usercart.cart.size(); i++){
-            bill.add("Name: " + Usercart.cart.get(i).getName() + "\tPrice: " + Usercart.cart.get(i).getPrice()
-            + "\tQuantity: " + Usercart.cart.get(i).getQuantity());
+        for(int i = 0; i < Usercart.cart.size()-1; i++){
+            bill.add("Name: " + Usercart.cart.get(i).getName() + "\tPrice: " + Usercart.cart.get(i).getPrice());
         }
         return bill;
     }
@@ -62,11 +62,14 @@ public class Customer  {
     }
 
     public double payBillCash(double amount){
+        String digits = "###.##";
+        DecimalFormat decimal = new DecimalFormat(digits);
         double billTotal = 0;
         if(Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
         }
         for(int i = 0; i < Usercart.cart.size()-1; i++){
+
             billTotal += (Usercart.cart.get(i).getPrice() * 1.13);
         }
         if(amount < billTotal){
@@ -74,7 +77,9 @@ public class Customer  {
             //throw new IllegalArgumentException("Not enough money");
         }
         else{
-            return amount - billTotal;
+            String sub = decimal.format(amount - billTotal);
+            Double finalAmount = Double.parseDouble(sub);
+            return finalAmount;
         }
     }
 

@@ -1,5 +1,6 @@
 package main.user;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import main.Cart;
@@ -45,6 +46,8 @@ public class Employee {
     }
 
     public double calculateBill(Customer customer){
+        String digits = "###.##";
+        DecimalFormat decimal = new DecimalFormat(digits);
         double billTotal = 0;
         if(customer.Usercart.cart.size() == 0){
             throw new IllegalArgumentException("Nothing in the cart");
@@ -52,8 +55,9 @@ public class Employee {
         for(int i = 0; i < customer.Usercart.cart.size()-1; i++){
             billTotal += (customer.Usercart.cart.get(i).getPrice() * 1.13);
         }
-
-        return billTotal;
+        String sub = decimal.format(billTotal);
+        Double stotal = Double.parseDouble(sub);
+        return stotal;
     }
 
 
