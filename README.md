@@ -1,5 +1,7 @@
 # Proj2_GroceryStore
 
+Google Presentation: https://docs.google.com/presentation/d/1qnrZ5tzpIdsFO5ccQHA_bQQnpYWupS3Legme9aq6a6s/edit?usp=sharing
+
 ## Sprint 2
 
 Sprint Goal: Basic fully functional software
